@@ -16,11 +16,11 @@
                 $.ajax({
                     type: "POST",
                     url: '.netlify/functions/post',
-                    data: JSON.stringify({
+                    data: {
                         'name': name,
                         'email': email,
                         'message': message
-                    }),
+                    },
                     success: function(res){
                         $('#form-response').text(res);
                     },
