@@ -4,22 +4,41 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript">
+    	function getParameterByName(name, url) {
+	    if (!url) url = window.location.href;
+	    name = name.replace(/[\[\]]/g, '\\$&');
+	    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+		results = regex.exec(url);
+	    if (!results) return null;
+	    if (!results[2]) return '';
+    	return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
         $(document).ready(function() {
 
             $("#submit").click(function(e) {
                 e.preventDefault();
 
-                var name = $("#name").val(),
-                    email = $("#email").val(),
-                    message = $("#message").val();
+                var nom = $("#nom").val(),
+                    motDePasse = $("#mot_de_passe").val(),
+                    motDePasseConfirmation = $("#mot_de_passe_confirmation").val(),
+                    contactNom = $("#contact_nom").val(),
+                    contactPrenom = $("#contact_prenom").val(),
+                    id = getParameterByName('id'),
+                    site = getParameterByName('site'),
+                    env = getParameterByName('env');
 
                 $.ajax({
                     type: "POST",
                     url: '.netlify/functions/post',
                     data: {
-                        'name': name,
-                        'email': email,
-                        'message': message
+                    	 'id': id,
+                        'site': site,
+                        'env': env,
+                        'nom': nom,
+                        'mot_de_passe': motDePasse,
+                        'mot_de_passe_confirmation': motDePasseConfirmation,
+                        'contact_nom': contactNom,
+                        'contact_prenom': contactPrenom
                     },
                     success: function(res){
                         $('#form-response').text(res);
@@ -36,12 +55,16 @@
 </head>
 <body>
 <form>
-    <label for="name">Name</label>
-    <input id="name">
-    <label for="email">Email</label>
-    <input id="email">
-    <label for="message">Message</label>
-    <textarea id="message"></textarea>
+    <label for="nom">nom</label>
+    <input id="nom">
+    <label for="mot_de_passe">mot_de_passe</label>
+    <input id="mot_de_passe">
+    <label for="mot_de_passe_confirmation">mot_de_passe_confirmation</label>
+    <input id="mot_de_passe_confirmation">
+    <label for="contact_nom">contact_nom</label>
+    <input id="contact_nom">
+    <label for="contact_prenom">contact_prenom</label>
+    <input id="contact_prenom">
     <button id="submit">Submit</button>
 </form>
 <div id="form-response"></div>
