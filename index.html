@@ -22,10 +22,10 @@
                         'message': message
                     }),
                     success: function(res){
-                        $('#form-response').text(res.msg);
+                        $('#form-response').text(res);
                     },
-                    error: function(){
-                        $('#form-response').text('Error.');
+                    error: function(res){
+                        $('#form-response').text(res);
                     }
                 });
 
