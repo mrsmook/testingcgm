@@ -2,16 +2,10 @@
   "name": "test",
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
-  "dependencies": {
-    "axios": "^0.19.2",
-    "netlify-lambda": "^1.6.3"
-  },
-  "devDependencies": {},
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:lambda": "netlify-lambda serve functions/",
-    "build:lambda": "netlify-lambda build functions/"
+    "build": "netlify-lambda build functions",
   },
   "repository": {
     "type": "git",
@@ -22,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/mrsmook/testingcgm/issues"
   },
-  "homepage": "https://github.com/mrsmook/testingcgm#readme"
+  "homepage": "https://github.com/mrsmook/testingcgm#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "netlify-lambda": "^1.6.3",
+    "slug": "^3.3.0"
+  }
 }
