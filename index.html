@@ -21,7 +21,7 @@
                         'message': message
                     }),
                     success: function(res){
-                        $('#form-response').text('Email was sent.');
+                        $('#form-response').text(res.immat);
                     },
                     error: function(){
                         $('#form-response').text('Error.');
