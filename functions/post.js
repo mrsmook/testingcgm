@@ -8,7 +8,7 @@ exports.handler = async (event, context, callback) => {
 
     // Grab the items and re-format to the fields we want
     if (data.length) {
-      response = data.immat;
+      response = data;
     }
     callback(null, {
       statusCode: 200,
