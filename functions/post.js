@@ -1,10 +1,16 @@
 // example of async handler using async-await
 // https://github.com/netlify/netlify-lambda/issues/43#issuecomment-444618311
+import querystring from "querystring";
+import axios from "axios";
 
-import axios from "axios"
 export async function handler(event, context) {
-  const name = event.queryStringParameters.name || "World";
-  const email = event.queryStringParameters.email || "World";
+  
+    // When the method is POST, the name will no longer be in the event’s
+  // queryStringParameters – it’ll be in the event body encoded as a query string
+  const params = querystring.parse(event.body);
+  const name = params.name || "World";
+  const email = params.email || "World";
+  
   try {
   	console.log("http://dev.cartegriseminute.net/apigeo/cgDonnees/getDonnees?immatriculation="+name+"&contrat="+email);
     const response = await axios.get("http://dev.cartegriseminute.net/apigeo/cgDonnees/getDonnees?immatriculation="+name+"&contrat="+email, { headers: { Accept: "application/json",
