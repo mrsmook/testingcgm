@@ -2,9 +2,8 @@
   # This will be your default build command.
   command = "npm run build"
   # This is where Netlify will look for your lambda functions.
-  functions = "functions"
-  # This is the directory that you are publishing from.
-  publish = "/"
+  functions = "functions-build"
+
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.
   for = "/*"
