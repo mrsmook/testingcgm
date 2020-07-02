@@ -3,6 +3,7 @@ var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
 var firstIteration = false;
+var counter = 0;
 function getParameterByName(name, url) {
 	if (!url) url = window.location.href;
 	name = name.replace(/[\[\]]/g, '\\$&');
@@ -20,12 +21,11 @@ $(".next").click(function(){
 	current_fs = $(this).parent();
 	next_fs = $(this).parent().next();
 
-	console.log(current_fs);
 	
 	//activate next step on progressbar using the index of next_fs
 	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
-	if(current_fs === 0 && firstIteration === false){
+	if(counter === 0 && firstIteration === false){
 		var nom = $("#nom").val(),
 			motDePasse = $("#mot_de_passe").val(),
 			motDePasseConfirmation = $("#mot_de_passe_confirmation").val(),
@@ -49,6 +49,7 @@ $(".next").click(function(){
 				'contact_prenom': contactPrenom
 			},
 			success: function(res){
+				counter++;
 				firstIteration = true;
 				//show the next fieldset
 				next_fs.show();
@@ -83,6 +84,7 @@ $(".next").click(function(){
 			}
 		});
 	}else{
+		counter++;
 		//show the next fieldset
 		next_fs.show();
 		//hide the current fieldset with style
@@ -119,7 +121,7 @@ $(".previous").click(function(){
 	
 	current_fs = $(this).parent();
 	previous_fs = $(this).parent().prev();
-	
+	counter--;
 	//de-activate current step on progressbar
 	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
 	
