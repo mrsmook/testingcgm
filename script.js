@@ -31,6 +31,10 @@ $(".next").click(function(){
 			motDePasseConfirmation = $("#mot_de_passe_confirmation").val(),
 			contactNom = $("#contact_nom").val(),
 			contactPrenom = $("#contact_prenom").val(),
+			siret = $("#siret").val(),
+			codePostal = $("#code_postal").val(),
+			ville = $("#ville").val(),
+			adresse = $("#adresse").val(),
 			id = getParameterByName('id'),
 			site = getParameterByName('site'),
 			env = getParameterByName('env');
@@ -46,7 +50,11 @@ $(".next").click(function(){
 				'mot_de_passe': motDePasse,
 				'mot_de_passe_confirmation': motDePasseConfirmation,
 				'contact_nom': contactNom,
-				'contact_prenom': contactPrenom
+				'contact_prenom': contactPrenom,
+				'siret': siret,
+				'codePostal': codePostal,
+				'ville': ville,
+				'adresse': adresse
 			},
 			success: function(res){
 				counter++;
@@ -77,10 +85,10 @@ $(".next").click(function(){
 					//this comes from the custom easing plugin
 					easing: 'easeInOutBack'
 				});
-				$('#form-response').text(res);
+				//todo add end loading
 			},
 			error: function(res){
-				$('#form-response').text(res);
+				//todo handle error message
 			}
 		});
 	}else{

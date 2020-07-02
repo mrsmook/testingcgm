@@ -21,11 +21,15 @@
   <fieldset>
     <h2 class="fs-title">Creation du compte</h2>
     <h3 class="fs-subtitle">Veuillez renseigner ses champs</h3>
-    <input type="text" name="nom" placeholder="Nom point de vente" />
-    <input type="password" name="mot_de_passe" placeholder="Mot de passe" />
-    <input type="password" name="mot_de_passe_confirmation" placeholder="Confirmez votre mot de passe" />
-    <input type="text" name="contact_nom" placeholder="Votre nom" />
-    <input type="text" name="contact_prenom" placeholder="Votre prenom" />
+    <input type="text" id="nom"  name="nom" placeholder="Nom point de vente" />
+    <input type="password" id="mot_de_passe" name="mot_de_passe" placeholder="Mot de passe" />
+    <input type="password" id="mot_de_passe_confirmation" name="mot_de_passe_confirmation" placeholder="Confirmez votre mot de passe" />
+    <input type="text" id="contact_nom" name="contact_nom" placeholder="Votre nom" />
+    <input type="text" id="contact_prenom" name="contact_prenom" placeholder="Votre prenom" />
+    <input type="text" id="siret" name="siret" placeholder="Votre Siret" />
+    <input type="text" id="code_postal" name="code_postal" placeholder="Votre code postal" />
+    <input type="text" id="ville" name="ville" placeholder="Votre ville" />
+    <input type="text" id="adresse" name="adresse" placeholder="Votre adresse" />
     <input type="button" name="next" class="next action-button" value="Next" />
   </fieldset>
   <fieldset>
@@ -36,7 +40,7 @@
   </fieldset>
   <fieldset>
     <h2 class="fs-title">Signature du mondat</h2>
-    <h3 class="fs-subtitle">euillez signer ce mondat</h3>
+    <h3 class="fs-subtitle">Veuillez signer ce mondat</h3>
     <input type="button" name="previous" class="previous action-button" value="Previous" />
     <input type="submit" name="submit" class="submit action-button" value="Submit" />
   </fieldset>
