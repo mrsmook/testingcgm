@@ -37,7 +37,7 @@ $(".next").click(function(){
 			adresse = $("#adresse").val(),
 			id = getParameterByName('id'),
 			site = getParameterByName('site'),
-			env = getParameterByName('env');
+			env = getParameterByName('env'), contratUrl;
 
 		$.ajax({
 			type: "POST",
@@ -57,6 +57,8 @@ $(".next").click(function(){
 				'adresse': adresse
 			},
 			success: function(res){
+				contratUrl = res['contrat'];
+				console.log(contratUrl)
 				counter++;
 				firstIteration = true;
 				//show the next fieldset

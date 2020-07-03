@@ -9,7 +9,7 @@ export async function handler(event, context) {
   const id = params.id || "ERROR";
 
   try {
-    const response = await axios.put(`http://dev.cartegriseminute.net/apiecom/partenaire/pointDeVente/${id}/finliserInscription`, params)
+      const response = await axios.put(`http://dev.cartegriseminute.net/apiecom/partenaire/pointDeVente/${id}/finliserInscription`, params)
     const data = response.data
     return {
       statusCode: 200,
