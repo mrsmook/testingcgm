@@ -39,7 +39,7 @@ $(".next").click(function(){
 			contactTelephone = $("#contact_telephone")
 			id = getParameterByName('id'),
 			site = getParameterByName('site'),
-			env = getParameterByName('env'), contratUrl;
+			env = getParameterByName('env');
 
 		$.ajax({
 			type: "POST",
