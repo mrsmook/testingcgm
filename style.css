@@ -4,6 +4,7 @@
 	display: none !important;
 }
 
+
 div.loading{
 	z-index: 999;
 	position: fixed;

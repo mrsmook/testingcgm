@@ -181,9 +181,9 @@ function generateIframe(site,env,id) {
 				title: 'Veuillez signer',
 				icon: 'info',
 				width: '90%',
-				width: '90%',
+				height: '90%',
 				html:
-					`<iframe id="ifrm" width="100%" src="${json.data.signatureUrl}"></iframe>` ,
+					`<iframe id="ifrm" width="100%" height="100%" src="${json.data.signatureUrl}"></iframe>` ,
 				showCloseButton: false,
 				showCancelButton: false,
 				focusConfirm: false,
