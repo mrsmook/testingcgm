@@ -167,7 +167,6 @@ $(".submit").click(function(){
 })
 
 function generateIframe(site,env,id) {
-	const configuration = {};
 	$.ajax({
 		type: "POST",
 		url: '.netlify/functions/generate',
@@ -181,7 +180,8 @@ function generateIframe(site,env,id) {
 			Swal.fire({
 				title: 'Veuillez signer',
 				icon: 'info',
-				width: '100%',
+				width: '90%',
+				width: '90%',
 				html:
 					`<iframe id="ifrm" width="100%" src="${json.data.signatureUrl}"></iframe>` ,
 				showCloseButton: false,
