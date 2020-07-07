@@ -175,8 +175,8 @@ function generateIframe(site,env,id) {
 		},
 		success: function(res){
 			configuration.redirectionMode = 'IN';
-			const signerid = res['data']['signatureUrl'];
 			console.log(res);
+			const signerid = res['data']['signatureUrl'];
 			universignSigInit('iframeContainerId', signerid, configuration);
 		},
 		error: function(res){
