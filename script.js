@@ -85,7 +85,7 @@ $(".next").click(function(){
 					//this comes from the custom easing plugin
 					easing: 'easeInOutBack'
 				});
-				generateIframe();
+				generateIframe(site,env,id);
 				//todo add end loading
 			},
 			error: function(res){
@@ -171,7 +171,7 @@ function generateIframe(site,env,id) {
 		data: {
 			'site': site,
 			'env': env,
-			'id':id
+			'id': id,
 		},
 		success: function(res){
 			configuration.redirectionMode = 'IN';
