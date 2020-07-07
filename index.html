@@ -5,6 +5,7 @@
   <title>CGM - LOGISTA</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <script type="text/javascript" src="<https://js.sandbox.dalenys.com/hosted-fields/v2.0.0/hosted-fields.min.js>"></script>
+  <script src="https://app.universign.com/sig/embed.js"></script>
 <link rel="stylesheet" href="./style.css">
 
 </head>
@@ -36,6 +37,10 @@
   <fieldset>
     <h2 class="fs-title">Signature du contrat</h2>
     <h3 class="fs-subtitle">Veuillez signer ce contrat</h3>
+    <div style="display:flex; justify-content:space-between; align-items:stretch; height:56vh;">
+      <div id="iframeContainerId" style="width:70%; display:inline-block; height:auto;">
+      </div>
+    </div>
     <input type="button" name="previous" class="previous action-button" value="Previous" />
     <input type="button" name="next" class="next action-button" value="Next" />
   </fieldset>
