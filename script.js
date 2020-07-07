@@ -175,12 +175,28 @@ function generateIframe(site,env,id) {
 		},
 		success: function(res){
 			var json = JSON.parse(res);
-			configuration.redirectionMode = 'IN';
-			const signerid = json.data.transactionId;
-			universignSigInit('iframeContainerId', signerid, configuration);
+			Swal.fire({
+				title: 'Veuillez signer',
+				icon: 'info',
+				html:
+					`<iframe id="ifrm" src="${json.data.signatureUrl}"></iframe>` ,
+				showCloseButton: true,
+				showCancelButton: true,
+				focusConfirm: false,
+				confirmButtonText:
+					'<i class="fa fa-thumbs-up"></i> Signer!',
+				confirmButtonAriaLabel: 'Signer',
+				cancelButtonText:
+					'<i class="fa fa-thumbs-down"></i> Quitter',
+				cancelButtonAriaLabel: 'Quitter'
+			})
 		},
 		error: function(res){
-			//todo handle error message
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: res.message,
+			})
 		}
 	});
 }
