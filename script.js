@@ -26,7 +26,7 @@ $(".next").click(function(){
 	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
 	if(counter === 0 && firstIteration === false){
-		toggleLoading();
+
 		var nom = $("#nom").val(),
 			motDePasse = $("#mot_de_passe").val(),
 			motDePasseConfirmation = $("#mot_de_passe_confirmation").val(),
@@ -41,6 +41,7 @@ $(".next").click(function(){
 			site = getParameterByName('site'),
 			env = getParameterByName('env');
 
+		toggleLoading();
 		$.ajax({
 			type: "POST",
 			url: '.netlify/functions/post',
@@ -57,7 +58,7 @@ $(".next").click(function(){
 				'codePostal': codePostal,
 				'ville': ville,
 				'adresse': adresse,
-				'contact_telephone': contactTelephone
+				//'contact_telephone': contactTelephone
 			},
 			success: function(res){
 				counter++;
