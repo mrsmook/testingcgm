@@ -57,8 +57,6 @@ $(".next").click(function(){
 				'adresse': adresse
 			},
 			success: function(res){
-				contratUrl = res['contrat'];
-				console.log(contratUrl)
 				counter++;
 				firstIteration = true;
 				//show the next fieldset
@@ -165,28 +163,23 @@ $(".submit").click(function(){
 	return false;
 })
 
-function generateIframe() {
+function generateIframe(site,env,id) {
 	const configuration = {};
-	configuration.redirectionMode = 'IN';
-	const signerid = '8d904ef7-68de-4776-8a1b-8c3a620c818d';
-	/**
-	 * The universignSigInit function add an iframe element as child of element with
-	 * id attribute equals to containerId parameter, the attribute src is set from
-	 * the universignUrl variable, it is the url of the website to be integrated in
-	 * the iframe, the width and height of the iframe will take 100% of its
-	 * container.
-	 *
-	 * @param {string} containerId The id of the element in which we will inject
-	 * the iframe.
-	 * @param {string} signerId The identifier of transaction.
-	 * @param {object} configuration The options list to customize the iframe:
-	 * * redirectionMode {string} This params have two possible values: IN or OUT,
-	 * the dafault value is OUT,
-	 * if the value of this params is equal to OUT the redirection will be done
-	 * outside the iframe(in website container of the iframe),
-	 * if the value of this params is equal to ÌN the redirection will be done
-	 * inside the iframe,
-	 * if the value of this params is otherwise, an exception will be triggered.
-	 */
-	universignSigInit('iframeContainerId', signerid, configuration);
+	$.ajax({
+		type: "POST",
+		url: '.netlify/functions/generate',
+		data: {
+			'site': site,
+			'env': env,
+			'id':id
+		},
+		success: function(res){
+			configuration.redirectionMode = 'IN';
+			const signerid = res['transactionId'];
+			universignSigInit('iframeContainerId', signerid, configuration);
+		},
+		error: function(res){
+			//todo handle error message
+		}
+	});
 }
