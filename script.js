@@ -26,6 +26,7 @@ $(".next").click(function(){
 	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
 	if(counter === 0 && firstIteration === false){
+		toggleLoading();
 		var nom = $("#nom").val(),
 			motDePasse = $("#mot_de_passe").val(),
 			motDePasseConfirmation = $("#mot_de_passe_confirmation").val(),
@@ -86,9 +87,11 @@ $(".next").click(function(){
 					easing: 'easeInOutBack'
 				});
 				generateIframe(site,env,id);
+				toggleLoading();
 				//todo add end loading
 			},
 			error: function(res){
+				toggleLoading();
 				//todo handle error message
 			}
 		});
@@ -178,17 +181,12 @@ function generateIframe(site,env,id) {
 			Swal.fire({
 				title: 'Veuillez signer',
 				icon: 'info',
+				width: '100%',
 				html:
-					`<iframe id="ifrm" src="${json.data.signatureUrl}"></iframe>` ,
-				showCloseButton: true,
-				showCancelButton: true,
+					`<iframe id="ifrm" width="100%" src="${json.data.signatureUrl}"></iframe>` ,
+				showCloseButton: false,
+				showCancelButton: false,
 				focusConfirm: false,
-				confirmButtonText:
-					'<i class="fa fa-thumbs-up"></i> Signer!',
-				confirmButtonAriaLabel: 'Signer',
-				cancelButtonText:
-					'<i class="fa fa-thumbs-down"></i> Quitter',
-				cancelButtonAriaLabel: 'Quitter'
 			})
 		},
 		error: function(res){
@@ -199,4 +197,16 @@ function generateIframe(site,env,id) {
 			})
 		}
 	});
+}
+
+var loadingOverlay = document.querySelector('.loading');
+
+function toggleLoading(){
+	document.activeElement.blur();
+
+	if (loadingOverlay.classList.contains('hidden')){
+		loadingOverlay.classList.remove('hidden');
+	} else {
+		loadingOverlay.classList.add('hidden');
+	}
 }
