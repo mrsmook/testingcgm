@@ -36,6 +36,7 @@ $(".next").click(function(){
 			codePostal = $("#code_postal").val(),
 			ville = $("#ville").val(),
 			adresse = $("#adresse").val(),
+			contactTelephone = $("#contact_telephone")
 			id = getParameterByName('id'),
 			site = getParameterByName('site'),
 			env = getParameterByName('env'), contratUrl;
@@ -55,7 +56,8 @@ $(".next").click(function(){
 				'siret': siret,
 				'codePostal': codePostal,
 				'ville': ville,
-				'adresse': adresse
+				'adresse': adresse,
+				'contact_telephone': contactTelephone
 			},
 			success: function(res){
 				counter++;
