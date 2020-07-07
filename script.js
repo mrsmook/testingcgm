@@ -174,10 +174,21 @@ function generateIframe(site,env,id) {
 			'id': id,
 		},
 		success: function(res){
-			configuration.redirectionMode = 'OUT';
-			const signerid = res['transactionId'];
-			console.log(res);
-			universignSigInit('iframeContainerId', signerid, configuration);
+			Swal.fire({
+				title: '<strong>HTML <u>example</u></strong>',
+				icon: 'info',
+				html:
+					`<iframe id="ifrm" src="${res['signatureUrl']}"></iframe>` ,
+				showCloseButton: true,
+				showCancelButton: true,
+				focusConfirm: false,
+				confirmButtonText:
+					'<i class="fa fa-thumbs-up"></i> Great!',
+				confirmButtonAriaLabel: 'Thumbs up, great!',
+				cancelButtonText:
+					'<i class="fa fa-thumbs-down"></i>',
+				cancelButtonAriaLabel: 'Thumbs down'
+			})
 		},
 		error: function(res){
 			//todo handle error message
