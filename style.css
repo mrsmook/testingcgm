@@ -3,7 +3,7 @@
 *.hidden {
 	display: none !important;
 }
-.swal2-modal .swal2-modal{
+.swal2-popup , .swal2-modal{
 	height: 90% !important;
 }
 .swal2-content{
