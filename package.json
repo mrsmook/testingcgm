@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/mrsmook/testingcgm#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "davexmlrpc": "^0.4.25",
     "netlify-lambda": "^1.6.3",
     "querystring": "^0.2.0",
